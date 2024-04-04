@@ -1,0 +1,23 @@
+{
+  "name": "job-nest-crud-api",
+  "version": "1.0.0",
+  "description": "Final Term Project-Cloud Computing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Unnati Kapadia",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.540.0",
+    "@aws-sdk/util-dynamodb": "^3.540.0",
+    "aws-sdk": "^2.1592.0",
+    "bcrypt": "^5.1.1",
+    "jsonwebtoken": "^9.0.2",
+    "serverless-iam-roles-per-function": "^3.2.0"
+  },
+  "devDependencies": {
+    "serverless-iam-roles-per-function": "^3.2.0"
+  }
+}

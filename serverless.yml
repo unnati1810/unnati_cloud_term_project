@@ -88,7 +88,6 @@ functions:
         Action:
           - "dynamodb:Scan"
         Resource: !GetAtt JobPostsTable.Arn
-
 resources:
   Resources:
     LabRole:
@@ -111,6 +110,18 @@ resources:
                 - Effect: Allow
                   Action: '*'
                   Resource: '*'
+    UserPolicy:
+      Type: AWS::IAM::Policy
+      Properties:
+        PolicyName: UserPolicy
+        PolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Action: 'cloudformation:DescribeStacks'
+              Resource: 'arn:aws:cloudformation:us-west-1:637423634948:stack/job-nest-crud-api-dev/*'
+        Users:
+          - 'arn:aws:sts::637423634948:assumed-role/voclabs/user3089287=un421671@dal.ca'
     JobPostsTable:
       Type: AWS::DynamoDB::Table
       Properties:

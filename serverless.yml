@@ -10,6 +10,7 @@ provider:
   timeout: 10 # seconds
   environment:
     JOB_POSTS_TABLE_NAME: ${self:custom.jobPostsTableName}
+  iamRole: LabRole  # Assigning LabRole to all functions
 
 custom:
   jobPostsTableName: job-posts-table-${self:provider.stage}
@@ -88,6 +89,7 @@ functions:
         Action:
           - "dynamodb:Scan"
         Resource: !GetAtt JobPostsTable.Arn
+
 resources:
   Resources:
     LabRole:
@@ -169,14 +171,6 @@ resources:
                   - storagegateway.amazonaws.com
               Action:
                 - sts:AssumeRole
-    LabInstanceProfile:
-      Type: AWS::IAM::InstanceProfile
-      DeletionPolicy: Retain
-      Properties:
-        InstanceProfileName: LabInstanceProfile
-        Path: /
-        Roles:
-          - !Ref LabRole
     JobPostsTable:
       Type: AWS::DynamoDB::Table
       Properties:

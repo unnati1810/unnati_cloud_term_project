@@ -94,6 +94,7 @@ resources:
     JobPostsTable:
       Type: AWS::DynamoDB::Table
       Properties:
+        Role: arn:aws:iam::637423634948:role/LabRole
         TableName: ${self:custom.jobPostsTableName}
         AttributeDefinitions:
           - AttributeName: jobPostId

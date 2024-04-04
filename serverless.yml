@@ -91,6 +91,26 @@ functions:
 
 resources:
   Resources:
+    LabRole:
+      Type: AWS::IAM::Role
+      Properties:
+        RoleName: LabRole
+        Path: /
+        AssumeRolePolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Principal:
+                AWS: 'arn:aws:iam::637423634948:root'
+              Action: 'sts:AssumeRole'
+        Policies:
+          - PolicyName: LabRolePolicy
+            PolicyDocument:
+              Version: '2012-10-17'
+              Statement:
+                - Effect: Allow
+                  Action: '*'
+                  Resource: '*'
     JobPostsTable:
       Type: AWS::DynamoDB::Table
       Properties:
